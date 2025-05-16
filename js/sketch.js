@@ -31,7 +31,7 @@ function startWebcam() {
     cam.elt.onloadedmetadata = function () {
       window.setCameraStreamToMediaPipe(cam.elt);
     }
-    p5canvas.style('width', '50%');
+    p5canvas.style('max-width', '640px');
     p5canvas.style('height', 'auto');
   }
 }

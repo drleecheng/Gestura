@@ -32,7 +32,7 @@ function startWebcam() {
       window.setCameraStreamToMediaPipe(cam.elt);
     }
     p5canvas.style('max-width', '640px');
-    p5canvas.style('height', 'auto');
+    p5canvas.style('max-height', '480px');
   }
 }
 

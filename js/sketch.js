@@ -5,6 +5,7 @@ var current;
 var instruments;
 var current_note = 0;
 var current_gesture = "nothing";
+var pos = {x:0,y:0};
 
 function setup() {
   
@@ -24,6 +25,10 @@ function setup() {
   });
 }
 
+function windowResized() {
+   resizeCanvas(windowWidth, windowHeight);
+}
+
 function startWebcam() {
   // If the function setCameraStreamToMediaPipe is defined in the window object, the camera stream is set to MediaPipe.
   if (window.setCameraStreamToMediaPipe) {
@@ -32,11 +37,10 @@ function startWebcam() {
     cam.elt.onloadedmetadata = function () {
       window.setCameraStreamToMediaPipe(cam.elt);
     }
-    console.log(windowWidth);
-
-    //p5canvas.style('max-width', '640px');
-   // p5canvas.style('max-height', '75%');
+    //p5canvas.style('max-width', '1024px');
+    //p5canvas.style('max-height', '75%');
   }
+  
 }
 
 function draw() {
@@ -57,7 +61,7 @@ function draw() {
       let name = gestures_results.gestures[i][0].categoryName;
       let score = gestures_results.gestures[i][0].score;
       let right_or_left = gestures_results.handednesses[i][0].hand;
-      let pos = {
+      pos = {
         x: gestures_results.landmarks[i][0].x * width,
         y: gestures_results.landmarks[i][0].y * height,
       };
@@ -138,31 +142,46 @@ function draw() {
         current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
         switch (current_gesture) {
           case "Do":
-            current_note = 60;
+            console.log(pos.y);
+            if (pos.y > height*2/3) {current_note = 60;}
+            else if (pos.y < height/3) {current_note = 84;}
+            else {current_note = 72;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case "Re":
-            current_note = 62;
+            if (pos.y > height*2/3) {current_note = 62;}
+            else if (pos.y < height/3) {current_note = 86;}
+            else {current_note = 74;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case "Mi":
-            current_note = 64;
+            if (pos.y > height*2/3) {current_note = 64;}
+            else if (pos.y < height/3) {current_note = 88;}
+            else {current_note = 76;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case "Fa":
-            current_note = 65;
+            if (pos.y > height*2/3) {current_note = 65;}
+            else if (pos.y < height/3) {current_note = 89;}
+            else {current_note = 77;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case "So":
-            current_note = 67;
+            if (pos.y > height*2/3) {current_note = 67;}
+            else if (pos.y < height/3) {current_note = 91;}
+            else {current_note = 80;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case "La":
-            current_note = 69;
+            if (pos.y > height*2/3) {current_note = 69;}
+            else if (pos.y < height/3) {current_note = 93;}
+            else {current_note = 82;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case "Ti":
-            current_note = 71;
+            if (pos.y > height*2/3) {current_note = 71;}
+            else if (pos.y < height/3) {current_note = 95;}
+            else {current_note = 85;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
          default:
@@ -174,5 +193,4 @@ function draw() {
     if ((gestures_results.gestures.length == 0) && (current)) current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
 
   }
-  
 }

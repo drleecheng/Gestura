@@ -7,6 +7,7 @@ var current_note = 0;
 var current_gesture = "nothing";
 
 function setup() {
+  
   p5canvas = createCanvas(640, 480);
   p5canvas.parent('#canvas');
   // When gestures are found, the following function is called. The detection results are stored in results.
@@ -31,8 +32,10 @@ function startWebcam() {
     cam.elt.onloadedmetadata = function () {
       window.setCameraStreamToMediaPipe(cam.elt);
     }
-    p5canvas.style('max-width', '640px');
-    p5canvas.style('max-height', '480px');
+    console.log(windowWidth);
+
+    //p5canvas.style('max-width', '640px');
+   // p5canvas.style('max-height', '75%');
   }
 }
 

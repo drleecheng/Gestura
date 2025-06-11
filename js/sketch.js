@@ -147,6 +147,7 @@ function draw() {
             else if (pos.y < height/3) {current_note = 84;}
             else {current_note = 72;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
+            console.log(Tone.Frequency(current_note, "midi"));
             console.log(Tone.Frequency(current_note, "midi").toNote());
             break;
           case "Re":
@@ -173,21 +174,21 @@ function draw() {
           case "So":
             if (pos.y > height*2/3) {current_note = 67;}
             else if (pos.y < height/3) {current_note = 91;}
-            else {current_note = 80;}
+            else {current_note = 79;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             console.log(Tone.Frequency(current_note, "midi").toNote());
             break;
           case "La":
             if (pos.y > height*2/3) {current_note = 69;}
             else if (pos.y < height/3) {current_note = 93;}
-            else {current_note = 82;}
+            else {current_note = 81;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             console.log(Tone.Frequency(current_note, "midi").toNote());
             break;
           case "Ti":
             if (pos.y > height*2/3) {current_note = 71;}
             else if (pos.y < height/3) {current_note = 95;}
-            else {current_note = 85;}
+            else {current_note = 83;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             console.log(Tone.Frequency(current_note, "midi").toNote());
             break;

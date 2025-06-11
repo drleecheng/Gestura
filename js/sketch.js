@@ -147,42 +147,49 @@ function draw() {
             else if (pos.y < height/3) {current_note = 84;}
             else {current_note = 72;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
+            console.log(Tone.Frequency(current_note, "midi").toNote());
             break;
           case "Re":
             if (pos.y > height*2/3) {current_note = 62;}
             else if (pos.y < height/3) {current_note = 86;}
             else {current_note = 74;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
+            console.log(Tone.Frequency(current_note, "midi").toNote());
             break;
           case "Mi":
             if (pos.y > height*2/3) {current_note = 64;}
             else if (pos.y < height/3) {current_note = 88;}
             else {current_note = 76;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
+            console.log(Tone.Frequency(current_note, "midi").toNote());
             break;
           case "Fa":
             if (pos.y > height*2/3) {current_note = 65;}
             else if (pos.y < height/3) {current_note = 89;}
             else {current_note = 77;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
+            console.log(Tone.Frequency(current_note, "midi").toNote());
             break;
           case "So":
             if (pos.y > height*2/3) {current_note = 67;}
             else if (pos.y < height/3) {current_note = 91;}
             else {current_note = 80;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
+            console.log(Tone.Frequency(current_note, "midi").toNote());
             break;
           case "La":
             if (pos.y > height*2/3) {current_note = 69;}
             else if (pos.y < height/3) {current_note = 93;}
             else {current_note = 82;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
+            console.log(Tone.Frequency(current_note, "midi").toNote());
             break;
           case "Ti":
             if (pos.y > height*2/3) {current_note = 71;}
             else if (pos.y < height/3) {current_note = 95;}
             else {current_note = 85;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
+            console.log(Tone.Frequency(current_note, "midi").toNote());
             break;
          default:
             current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());

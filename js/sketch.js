@@ -44,17 +44,24 @@ function windowResized() {
 }
 
 function startWebcam() {
-  // If the function setCameraStreamToMediaPipe is defined in the window object, the camera stream is set to MediaPipe.
+  // If the function setCameraStreamToMediaPipe is defined in the window object, 
+  // the camera stream is set to MediaPipe.
   if (window.setCameraStreamToMediaPipe) {
-    cam = createCapture(VIDEO);
+    let constraints = {
+      video: {
+        aspectRatio: 16 / 9,
+        facingMode: "user"
+      },
+      audio: false
+    };cam = createCapture(constraints);
     cam.hide();
-    cam.elt.onloadedmetadata = function () {
-      window.setCameraStreamToMediaPipe(cam.elt);
-    }
-    //p5canvas.style('max-width', '1024px');
-    //p5canvas.style('max-height', '75%');
+    cam.elt.onloadedmetadata = () => {
+      if (cam.elt.videoWidth > 0 && cam.elt.videoHeight > 0) {
+        window.setCameraStreamToMediaPipe(cam.elt);
+        console.log("Camera connected to MediaPipe");
+      }
+    };
   }
-  
 }
 
 function draw() {

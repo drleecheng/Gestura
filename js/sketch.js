@@ -8,9 +8,28 @@ var current_gesture = "nothing";
 var pos = {x:0,y:0};
 
 function setup() {
-  
-  p5canvas = createCanvas(640, 480);
+  let targetRatio = 16 / 9;
+  let w = windowWidth;
+  let h = windowHeight;
+
+  if (windowWidth / windowHeight > targetRatio) {
+    w = windowHeight * targetRatio;
+  } else {
+    h = windowWidth / targetRatio;
+  }
+
+  p5canvas = createCanvas(w * 0.95, h * 0.95); 
   p5canvas.parent('#canvas');
+  let body = select('body');
+  body.style('margin', '0');
+  body.style('overflow', 'hidden');
+  p5canvas.style('display', 'block');
+  p5canvas.style('margin', 'auto');
+  let container = select('#canvas');
+  container.style('height', '100vh');
+  container.style('display', 'flex');
+  container.style('align-items', 'center');
+  
   // When gestures are found, the following function is called. The detection results are stored in results.
   gotGestures = function (results) {
     gestures_results = results;
@@ -26,7 +45,12 @@ function setup() {
 }
 
 function windowResized() {
-   resizeCanvas(windowWidth, windowHeight);
+// Repeat the logic here so it stays fixed when rotating/resizing
+  let targetRatio = 16 / 9;
+  let w = (windowWidth / windowHeight > targetRatio) ? windowHeight * targetRatio : windowWidth;
+  let h = (windowWidth / windowHeight > targetRatio) ? windowHeight : windowWidth / targetRatio;
+  
+  resizeCanvas(w * 0.95, h * 0.95);
 }
 
 function startWebcam() {

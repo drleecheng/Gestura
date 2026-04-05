@@ -23,7 +23,7 @@ function setup() {
   let body = select('body');
   body.style('margin', '0');
   body.style('overflow', 'hidden');
-  p5canvas.style('display', 'block');
+  p5canvas.style('display', 'none');
   p5canvas.style('margin', 'auto');
   let container = select('#canvas');
   container.style('height', '100vh');

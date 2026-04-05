@@ -9,7 +9,15 @@ var pos = {x:0,y:0};
 
 function setup() 
 {
-  p5canvas = createCanvas(640, 480);
+  let w = windowWidth;
+  let h = windowHeight;
+
+  if (windowWidth / windowHeight > targetRatio) {
+    w = windowHeight * targetRatio;
+  } else {
+    h = windowWidth / targetRatio;
+  }
+  p5canvas = createCanvas(w * 0.95, h * 0.95); 
   p5canvas.parent('#canvas');
   // When gestures are found, the following function is called. The detection results are stored in results.
   gotGestures = function (results) {

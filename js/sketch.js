@@ -9,6 +9,7 @@ var pos = {x:0,y:0};
 
 function setup() 
 {
+  let targetRatio = 16 / 9;
   let w = windowWidth;
   let h = windowHeight;
 
@@ -34,7 +35,12 @@ function setup()
 }
 
 function windowResized() {
-   resizeCanvas(windowWidth, windowHeight);
+// Repeat the logic here so it stays fixed when rotating/resizing
+  let targetRatio = 16 / 9;
+  let w = (windowWidth / windowHeight > targetRatio) ? windowHeight * targetRatio : windowWidth;
+  let h = (windowWidth / windowHeight > targetRatio) ? windowHeight : windowWidth / targetRatio;
+  
+  resizeCanvas(w * 0.95, h * 0.95);
 }
 
 function startWebcam() {
